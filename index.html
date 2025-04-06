@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pracovní výkazy & Finance</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <h1>Pracovní výkazy & Finance</h1>
+        <nav>
+            <button data-tab="reports">Pracovní výkazy</button>
+            <button data-tab="finances">Finance</button>
+            <button data-tab="debts">Dluhy a splátky</button>
+            <button data-tab="settings">Nastavení</button>
+        </nav>
+    </header>
+
+    <main>
+        <section id="reports" class="tab-content active">
+            <h2>Pracovní výkazy</h2>
+            <div id="timer">
+                <span id="timer-display">00:00:00</span>
+                <button id="start-timer">Spustit</button>
+                <button id="pause-timer">Pauza</button>
+                <button id="stop-timer">Zastavit</button>
+            </div>
+            <div id="report-form">
+                <label for="person">Osoba:</label>
+                <select id="person">
+                    <option value="Maru">Maru</option>
+                    <option value="Marty">Marty</option>
+                </select><br>
+                <label for="category">Kategorie:</label>
+                <select id="category"></select><br>
+                <button id="add-report">Přidat výkaz</button>
+            </div>
+            <div id="report-table"></div>
+        </section>
+
+        <section id="finances" class="tab-content">
+            <h2>Finance</h2>
+            <div id="finance-form">
+                <label for="finance-date">Datum:</label>
+                <input type="date" id="finance-date"><br>
+                <label for="finance-category">Kategorie:</label>
+                <select id="finance-category"></select><br>
+                <label for="finance-amount">Částka:</label>
+                <input type="number" id="finance-amount"><br>
+                <label for="finance-currency">Měna:</label>
+                <select id="finance-currency">
+                    <option value="CZK">CZK</option>
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                </select><br>
+                <label for="finance-debt-payment">Splátka dluhu:</label>
+                <input type="number" id="finance-debt-payment" value="0"><br>
+                <button id="add-finance">Přidat záznam</button>
+            </div>
+            <div id="finance-table"></div>
+        </section>
+
+        <section id="debts" class="tab-content">
+            <h2>Dluhy a splátky</h2>
+            <div id="debt-form">
+                <label for="debt-person">Osoba:</label>
+                <select id="debt-person">
+                    <option value="Maru">Maru</option>
+                    <option value="Marty">Marty</option>
+                </select><br>
+                <label for="debt-type">Typ dluhu:</label>
+                <select id="debt-type">
+                    <option value="nájem">Nájem</option>
+                    <option value="ostatní">Ostatní</option>
+                </select><br>
+                <label for="debt-amount">Částka:</label>
+                <input type="number" id="debt-amount"><br>
+                <label for="debt-currency">Měna:</label>
+                <select id="debt-currency">
+                    <option value="CZK">CZK</option>
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                </select><br>
+                <button id="add-debt">Přidat dluh</button>
+            </div>
+            <div id="debt-table"></div>
+            <div id="debt-payment-form">
+                <label for="payment-date">Datum splátky:</label>
+                <input type="date" id="payment-date"><br>
+                <label for="payment-person">Osoba:</label>
+                <select id="payment-person">
+                    <option value="Maru">Maru</option>
+                    <option value="Marty">Marty</option>
+                </select><br>
+                <label for="payment-amount">Částka splátky:</label>
+                <input type="number" id="payment-amount"><br>
+                <label for="payment-currency">Měna:</label>
+                <select id="payment-currency">
+                    <option value="CZK">CZK</option>
+                    <option value="EUR">EUR</option>
+                    <option value="USD">USD</option>
+                </select><br>
+                <button id="add-payment">Přidat splátku</button>
+            </div>
+            <div id="payment-table"></div>
+        </section>
+
+        <section id="settings" class="tab-content">
+            <h2>Nastavení</h2>
+            <div id="category-settings">
+                <h3>Kategorie</h3>
+                <label for="new-category">Nová kategorie:</label>
+                <input type="text" id="new-category"><br>
+                <button id="add-category">Přidat kategorii</button>
+                <label for="new-finance-category">Nová kategorie financí:</label>
+                <input type="text" id="new-finance-category"><br>
+                <button id="add-finance-category">Přidat kategorii financí</button>
+            </div>
+            <div id="rent-settings">
+                <h3>Nastavení nájmu</h3>
+                <label for="rent-czk">Nájem CZK:</label>
+                <input type="number" id="rent-czk"><br>
+                <label for="rent-eur">Nájem EUR:</label>
+                <input type="number" id="rent-eur"><br>
+                <label for="rent-usd">Nájem USD:</label>
+                <input type="number" id="rent-usd"><br>
+                <label for="rent-day">Den v měsíci:</label>
+                <input type="number" id="rent-day"><br>
+                <button id="save-rent">Uložit nastavení nájmu</button>
+            </div>
+            <div id="export-settings">
+                <h3>Export dat</h3>
+                <button id="export-reports">Export výkazů</button>
+                <button id="export-finances">Export financí</button>
+                <button id="export-debts">Export dluhů</button>
+                <button id="export-payments">Export splátek</button>
+            </div>
+        </section>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
