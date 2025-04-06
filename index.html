@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="cs">
 <head>
@@ -569,4 +568,174 @@ Nyní pokračujme s HTML obsahem pro záložku Pracovní výkazy:
                 </table>
             </div>
         </div>
-```
+
+<!-- Pokračování HTML kódu pro sekci dluhy a splátky -->
+<div class="form-group">
+    <label for="debtNote">Poznámka:</label>
+    <textarea id="debtNote" rows="3"></textarea>
+</div>
+<button type="submit" class="primary"><i class="fas fa-save"></i> Uložit</button>
+</form>
+</div>
+<div class="form-col">
+    <h3>Přidat splátku</h3>
+    <form id="debtPaymentForm">
+        <div class="form-group">
+            <label for="paymentDate">Datum:</label>
+            <input type="date" id="paymentDate" required>
+        </div>
+        <div class="form-group">
+            <label for="paymentPerson">Osoba:</label>
+            <select id="paymentPerson" required>
+                <option value="Maru">Maru</option>
+                <option value="Marty">Marty</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="paymentType">Typ splátky:</label>
+            <select id="paymentType" required>
+                <option value="Nájem">Nájem</option>
+                <option value="Ostatní">Ostatní</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="paymentAmount">Částka:</label>
+            <input type="number" id="paymentAmount" min="0" step="0.01" required>
+        </div>
+        <div class="form-group">
+            <label for="paymentCurrency">Měna:</label>
+            <select id="paymentCurrency" required>
+                <option value="CZK">CZK</option>
+                <option value="EUR">EUR</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="paymentNote">Poznámka:</label>
+            <textarea id="paymentNote" rows="3"></textarea>
+        </div>
+        <button type="submit" class="primary"><i class="fas fa-save"></i> Uložit</button>
+    </form>
+</div>
+</div>
+
+<h3>Seznam dluhů</h3>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Osoba</th>
+                <th>Typ dluhu</th>
+                <th>Částka</th>
+                <th>Měna</th>
+                <th>Poznámka</th>
+                <th>Akce</th>
+            </tr>
+        </thead>
+        <tbody id="debtsTableBody">
+            <!-- Zde budou dynamicky přidány řádky -->
+        </tbody>
+    </table>
+</div>
+
+<h3>Seznam splátek</h3>
+<div class="table-container">
+    <table>
+        <thead>
+            <tr>
+                <th>Datum</th>
+                <th>Osoba</th>
+                <th>Typ splátky</th>
+                <th>Částka</th>
+                <th>Měna</th>
+                <th>Poznámka</th>
+                <th>Akce</th>
+            </tr>
+        </thead>
+        <tbody id="debtPaymentsTableBody">
+            <!-- Zde budou dynamicky přidány řádky -->
+        </tbody>
+    </table>
+</div>
+</div>
+
+<!-- Sekce Nastavení -->
+<div id="settings" class="tab-content">
+<h2>Nastavení aplikace</h2>
+
+<div id="autoAddRentSection" class="setting-section">
+    <h3>Automatické přidání nájmu</h3>
+    <form id="rentSettingsForm">
+        <div class="form-row">
+            <div class="form-col">
+                <div class="form-group">
+                    <label for="monthlyRentCZK">Měsíční nájem (CZK):</label>
+                    <input type="number" id="monthlyRentCZK" min="0" step="0.01" value="20400">
+                </div>
+            </div>
+            <div class="form-col">
+                <div class="form-group">
+                    <label for="monthlyRentEUR">Měsíční nájem (EUR):</label>
+                    <input type="number" id="monthlyRentEUR" min="0" step="0.01" value="800">
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="autoAddRentDay">Den v měsíci pro automatické přidání nájmu:</label>
+            <input type="number" id="autoAddRentDay" min="1" max="31" value="1">
+        </div>
+        <button type="button" id="updateRentSettings" class="primary"><i class="fas fa-save"></i> Uložit nastavení</button>
+    </form>
+</div>
+
+<div class="setting-section">
+    <h3>Správa kategorií</h3>
+    <form id="addCategoryForm">
+        <div class="form-row">
+            <div class="form-col">
+                <div class="form-group">
+                    <label for="newCategoryInput">Nová kategorie:</label>
+                    <input type="text" id="newCategoryInput" required>
+                </div>
+            </div>
+            <div class="form-col">
+                <div class="form-group">
+                    <label for="categoryTypeSelect">Typ kategorie:</label>
+                    <select id="categoryTypeSelect" required>
+                        <option value="report">Kategorie výkazů</option>
+                        <option value="finance">Kategorie financí</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="primary"><i class="fas fa-plus"></i> Přidat kategorii</button>
+    </form>
+    
+    <div class="category-container">
+        <h4>Kategorie výkazů</h4>
+        <div id="categoriesList" class="category-list">
+            <!-- Zde budou dynamicky přidány kategorie -->
+        </div>
+    </div>
+    
+    <div class="category-container">
+        <h4>Kategorie financí</h4>
+        <div id="financeCategoriesList" class="category-list">
+            <!-- Zde budou dynamicky přidány kategorie -->
+        </div>
+    </div>
+</div>
+
+<div class="setting-section">
+    <h3>Export dat</h3>
+    <button id="exportDataBtn" class="primary"><i class="fas fa-download"></i> Exportovat data do CSV</button>
+    <p>Tímto stáhnete čtyři soubory: vykazy.csv, finance.csv, dluhy.csv a splatky.csv.</p>
+</div>
+</div>
+</div>
+
+<script>
+// Zde bude JavaScript kód
+</script>
+</body>
+</html>
